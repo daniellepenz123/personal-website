@@ -1579,3 +1579,13 @@ h3 {
     animation: logo-press 220ms ease-out;
   }
 }
+
+.hero-portrait > img,
+.editorial-portrait > img,
+.advocacy-wave > svg,
+.signal-art > svg,
+.portfolio-art > svg {
+  display: block;
+  background-color: var(--background);
+  box-shadow: 11px 11px 0 0 #eeeeee, 11px 11px 0 1px var(--line);
+}
