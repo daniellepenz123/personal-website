@@ -1468,3 +1468,67 @@ h3 {
     padding-block: 48px 56px;
   }
 }
+
+.portfolio-work-list article + article {
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+  padding-top: 32px;
+}
+
+.portfolio-work-list h3,
+.credential-list h3 {
+  margin: 0 0 8px;
+}
+
+.portfolio-work-list p:not(.eyebrow),
+.credential-list p {
+  color: var(--muted);
+}
+
+.credential-group {
+  border-top: 1px solid var(--line);
+}
+
+.credential-group:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.credential-group summary {
+  padding: 20px 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.credential-group summary:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.credential-list {
+  list-style: none;
+  padding: 0 8px 20px;
+  margin: 0;
+}
+
+.credential-list li + li {
+  margin-top: 24px;
+}
+
+.credential-list h3 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.credential-list p {
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.portfolio-memberships {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.portfolio-memberships li + li {
+  margin-top: 12px;
+}
