@@ -84,10 +84,38 @@ nav a {
   text-decoration: none;
 }
 
-nav a:hover,
-nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
+nav a {
+  position: relative;
+  --underline-inset: 0px;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: var(--underline-inset);
+  right: var(--underline-inset);
+  bottom: 5px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after,
+nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.site-header nav a[href="contact.html"] {
+  --underline-inset: 16px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  nav a::after {
+    transition: transform 180ms ease-out;
+  }
 }
 
 nav a[aria-current="page"] {
