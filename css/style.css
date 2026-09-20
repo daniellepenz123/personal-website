@@ -1532,3 +1532,22 @@ h3 {
 .portfolio-memberships li + li {
   margin-top: 12px;
 }
+
+@media (min-width: 701px) {
+  .aligned-heading-copy > .prose {
+    padding-top: 47px;
+  }
+}
+
+@keyframes logo-press {
+  0%, 100% { transform: translateX(0); filter: blur(0); }
+  25% { transform: translateX(-2px) rotate(-0.5deg); filter: blur(1px); }
+  50% { transform: translateX(2px) rotate(0.5deg); filter: blur(0.6px); }
+  75% { transform: translateX(-1px); filter: blur(0.3px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-name:active .site-logo {
+    animation: logo-press 220ms ease-out;
+  }
+}
