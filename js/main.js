@@ -85,7 +85,13 @@ if (contactForm) {
   const detailGroups = contactForm.querySelectorAll("[data-inquiry-type]");
   const submitButton = contactForm.querySelector("[type='submit']");
   const status = contactForm.querySelector(".contact-form-status");
+  const statusMessage = status.querySelector(".contact-form-status-message");
   let submitting = false;
+
+  function updateSubmissionStatus(state, message) {
+    status.dataset.state = state;
+    statusMessage.textContent = message;
+  }
 
   function updateInquiryFields() {
     detailGroups.forEach((group) => {
@@ -109,7 +115,7 @@ if (contactForm) {
     submitting = true;
     submitButton.disabled = true;
     contactForm.setAttribute("aria-busy", "true");
-    status.textContent = "Sending your inquiry…";
+    updateSubmissionStatus("sending", "Sending your inquiry…");
 
     try {
       const response = await fetch(contactForm.action, {
@@ -126,9 +132,15 @@ if (contactForm) {
 
       contactForm.reset();
       updateInquiryFields();
-      status.textContent = "Thank you. Your inquiry has been sent successfully.";
+      updateSubmissionStatus(
+        "success",
+        "Thank you. Your inquiry has been sent successfully."
+      );
     } catch {
-      status.textContent = "Your inquiry could not be sent. Your details are still here. Please try again.";
+      updateSubmissionStatus(
+        "error",
+        "Your inquiry could not be sent. Your details are still here. Please try again."
+      );
     } finally {
       submitting = false;
       submitButton.disabled = false;
