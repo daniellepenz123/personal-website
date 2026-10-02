@@ -1591,3 +1591,75 @@ button,
 summary {
   -webkit-tap-highlight-color: rgb(0 0 0 / 12%);
 }
+
+/* Contact form controls stay within the existing inquiry card. */
+.contact-page .contact-form,
+.contact-page .contact-form-field,
+.contact-page .contact-form-details {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.contact-page .contact-form {
+  gap: 20px;
+}
+
+.contact-page .contact-form label,
+.contact-page .contact-form legend {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.contact-page .contact-form-details {
+  margin: 0;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  gap: 16px;
+}
+
+.contact-page .contact-form legend {
+  padding: 0 0 8px;
+}
+
+.contact-page .contact-form input,
+.contact-page .contact-form select,
+.contact-page .contact-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--background);
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+}
+
+.contact-page .contact-form textarea {
+  resize: vertical;
+}
+
+.contact-page .contact-form :is(input, select, textarea, button):focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+.contact-page .contact-form .button {
+  min-height: 54px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.contact-page .contact-form .button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.contact-page .contact-form-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}

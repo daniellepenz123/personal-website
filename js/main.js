@@ -78,96 +78,64 @@ speakingTopics.forEach((topic) => {
   });
 });
 
-const inquiryEmail = "danielle.penz123@gmail.com";
+const contactForm = document.querySelector(".contact-form");
 
-const inquiryTemplates = {
-  speaking: {
-    subject: "Speaking inquiry",
-    body: [
-      "Hello Danielle,",
-      "",
-      "I’m reaching out about a speaking opportunity.",
-      "",
-      "Name:",
-      "Organization:",
-      "Event name:",
-      "Event or organization website:",
-      "Intended audience:",
-      "Proposed topic:",
-      "Proposed date and time zone:",
-      "Format (virtual or in person):",
-      "Location, if in person:",
-      "Expected length:",
-      "Speaker budget:",
-      "Recording or publication plans:",
-      "",
-      "Additional details:",
-      "",
-      "Thank you,"
-    ].join("\r\n")
-  },
+if (contactForm) {
+  const inquiryType = contactForm.querySelector("[name='inquiry_type']");
+  const detailGroups = contactForm.querySelectorAll("[data-inquiry-type]");
+  const submitButton = contactForm.querySelector("[type='submit']");
+  const status = contactForm.querySelector(".contact-form-status");
+  let submitting = false;
 
-  interview: {
-    subject: "Interview request",
-    body: [
-      "Hello Danielle,",
-      "",
-      "I’m reaching out to request an interview.",
-      "",
-      "Name:",
-      "Organization, publication, or podcast:",
-      "Website:",
-      "Interview topic and purpose:",
-      "Intended audience:",
-      "Format (written, phone, video, or in person):",
-      "Proposed date and time zone:",
-      "Expected length:",
-      "Deadline:",
-      "Recording and publication plans:",
-      "",
-      "Additional details:",
-      "",
-      "Thank you,"
-    ].join("\r\n")
-  },
-
-  collaboration: {
-    subject: "Collaboration inquiry",
-    body: [
-      "Hello Danielle,",
-      "",
-      "I’m reaching out about a potential collaboration.",
-      "",
-      "Name:",
-      "Organization:",
-      "Website:",
-      "Project or opportunity:",
-      "Purpose of the work:",
-      "Proposed role or contribution:",
-      "Scope of work:",
-      "Timeline:",
-      "Available budget:",
-      "",
-      "Additional details:",
-      "",
-      "Thank you,"
-    ].join("\r\n")
+  function updateInquiryFields() {
+    detailGroups.forEach((group) => {
+      const active = group.dataset.inquiryType === inquiryType.value;
+      group.hidden = !active;
+      group.disabled = !active;
+    });
   }
-};
 
-const inquiryLinks = document.querySelectorAll("[data-inquiry]");
+  inquiryType.addEventListener("change", updateInquiryFields);
+  contactForm.addEventListener("reset", () => {
+    window.requestAnimationFrame(updateInquiryFields);
+  });
+  updateInquiryFields();
 
-inquiryLinks.forEach((link) => {
-  const inquiryType = link.dataset.inquiry;
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (submitting || !contactForm.reportValidity()) return;
 
-  if (!Object.hasOwn(inquiryTemplates, inquiryType)) return;
+    const payload = Object.fromEntries(new FormData(contactForm));
+    submitting = true;
+    submitButton.disabled = true;
+    contactForm.setAttribute("aria-busy", "true");
+    status.textContent = "Sending your inquiry…";
 
-  const template = inquiryTemplates[inquiryType];
-  const subject = encodeURIComponent(template.subject);
-  const body = encodeURIComponent(template.body);
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(30000)
+      });
 
-  link.href = `mailto:${inquiryEmail}?subject=${subject}&body=${body}`;
-});
+      if (!response.ok) throw new Error("Submission failed");
+
+      contactForm.reset();
+      updateInquiryFields();
+      status.textContent = "Thank you. Your inquiry has been sent successfully.";
+    } catch {
+      status.textContent = "Your inquiry could not be sent. Your details are still here. Please try again.";
+    } finally {
+      submitting = false;
+      submitButton.disabled = false;
+      contactForm.removeAttribute("aria-busy");
+    }
+  });
+}
 
 const reducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"

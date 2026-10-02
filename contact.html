@@ -61,43 +61,89 @@
                 <h2 id="inquiry-title">Start a conversation.</h2>
 
                 <p class="inquiry-card-description">
-                    Choose an inquiry type to open an email draft.
-                    Add your details, then review and send it
-                    from your email app.
+                    Choose an inquiry type and share your details below.
+                    Fields marked required must be completed.
                 </p>
 
-                <div class="inquiry-card-actions">
-                    <a class="button" data-inquiry="speaking"
-                        href="mailto:danielle.penz123@gmail.com?subject=Speaking%20inquiry">
-                        <span>Speaking inquiry</span>
-                        <span aria-hidden="true">↗</span>
-                    </a>
-
-                    <a class="button" data-inquiry="interview"
-                        href="mailto:danielle.penz123@gmail.com?subject=Interview%20request">
-                        <span>Interview request</span>
-                        <span aria-hidden="true">↗</span>
-                    </a>
-
-                    <a class="button" data-inquiry="collaboration"
-                        href="mailto:danielle.penz123@gmail.com?subject=Collaboration%20inquiry">
-                        <span>Collaboration inquiry</span>
-                        <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-
-                <div class="inquiry-card-direct">
-                    <p class="eyebrow">Or email me directly</p>
-
-                    <a class="inquiry-email" href="mailto:danielle.penz123@gmail.com">
-                        danielle.penz123@gmail.com
-                    </a>
-
-                    <p class="inquiry-email-note">
-                        If a button doesn’t open a draft, use this
-                        address in your preferred email service.
-                    </p>
-                </div>
+                <form class="contact-form" action="https://submit-form.com/yb1uEKgc4" method="post">
+                    <div class="contact-form-field">
+                        <label for="contact-name">Name (required)</label>
+                        <input id="contact-name" name="name" type="text" autocomplete="name" required>
+                    </div>
+                    <div class="contact-form-field">
+                        <label for="contact-email">Email (required)</label>
+                        <input id="contact-email" name="email" type="email" autocomplete="email" required>
+                    </div>
+                    <div class="contact-form-field">
+                        <label for="contact-inquiry">Inquiry type (required)</label>
+                        <select id="contact-inquiry" name="inquiry_type" required>
+                            <option value="General contact">General contact</option>
+                            <option value="Speaking inquiry">Speaking inquiry</option>
+                            <option value="Interview / media request">Interview / media request</option>
+                            <option value="Collaboration inquiry">Collaboration inquiry</option>
+                        </select>
+                    </div>
+                    <fieldset class="contact-form-details" data-inquiry-type="Speaking inquiry" hidden disabled>
+                        <legend>Speaking details (optional)</legend>
+                        <div class="contact-form-field">
+                            <label for="speaking-organization">Organization / event</label>
+                            <input id="speaking-organization" name="speaking_organization_event" type="text">
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="speaking-date">Event date</label>
+                            <input id="speaking-date" name="speaking_event_date" type="date">
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="speaking-format">Format</label>
+                            <select id="speaking-format" name="speaking_format">
+                                <option value="Undecided">Undecided</option>
+                                <option value="In person">In person</option>
+                                <option value="Virtual">Virtual</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="speaking-location">Location</label>
+                            <input id="speaking-location" name="speaking_location" type="text">
+                        </div>
+                    </fieldset>
+                    <fieldset class="contact-form-details" data-inquiry-type="Interview / media request" hidden disabled>
+                        <legend>Interview / media details (optional)</legend>
+                        <div class="contact-form-field">
+                            <label for="interview-organization">Organization / publication</label>
+                            <input id="interview-organization" name="interview_organization_publication" type="text">
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="interview-format">Interview format</label>
+                            <input id="interview-format" name="interview_format" type="text">
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="interview-date">Requested date / deadline</label>
+                            <input id="interview-date" name="interview_requested_date_deadline" type="text">
+                        </div>
+                    </fieldset>
+                    <fieldset class="contact-form-details" data-inquiry-type="Collaboration inquiry" hidden disabled>
+                        <legend>Collaboration details (optional)</legend>
+                        <div class="contact-form-field">
+                            <label for="collaboration-organization">Organization / project</label>
+                            <input id="collaboration-organization" name="collaboration_organization_project" type="text">
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="collaboration-type">Type of collaboration</label>
+                            <input id="collaboration-type" name="collaboration_type" type="text">
+                        </div>
+                        <div class="contact-form-field">
+                            <label for="collaboration-timeline">Approximate timeline</label>
+                            <input id="collaboration-timeline" name="collaboration_timeline" type="text">
+                        </div>
+                    </fieldset>
+                    <div class="contact-form-field">
+                        <label for="contact-message">Message / details (required)</label>
+                        <textarea id="contact-message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button class="button" type="submit">Send inquiry</button>
+                    <p class="contact-form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+                </form>
             </section>
         </div>
 
