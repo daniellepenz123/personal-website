@@ -1503,6 +1503,12 @@ h3 {
   }
 }
 
+@media (max-width: 700px) {
+  .portfolio-page #contributions-title {
+    margin-bottom: 0;
+  }
+}
+
 .portfolio-work-list article + article {
   border-top: 1px solid var(--line);
   margin-top: 32px;
