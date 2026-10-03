@@ -1535,8 +1535,13 @@ h3 {
   margin-top: 0;
 }
 
-.portfolio-work-list .portfolio-speaking-note {
+.portfolio-work-list .portfolio-contribution-note {
   color: var(--muted);
+  font-size: 14px;
+}
+
+.portfolio-work-list .portfolio-project-status {
+  margin: 0 0 16px;
   font-size: 14px;
 }
 
