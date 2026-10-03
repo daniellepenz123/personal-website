@@ -1519,6 +1519,21 @@ h3 {
   color: var(--muted);
 }
 
+.portfolio-work-list .eyebrow.portfolio-speaking-organizations {
+  margin: 20px 0 6px;
+  padding: 0;
+  background: none;
+}
+
+.portfolio-work-list .portfolio-speaking-organizations + p {
+  margin-top: 0;
+}
+
+.portfolio-work-list .portfolio-speaking-note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .credential-group {
   border-top: 1px solid var(--line);
 }
