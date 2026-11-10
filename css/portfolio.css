@@ -1,0 +1,80 @@
+/* Portfolio-only additions; load after the shared style.css. */
+.portfolio-page .content-section {
+  column-gap: clamp(36px, 5.7vw, 64px);
+  padding-block: clamp(40px, 5vw, 64px);
+}
+.portfolio-page .content-section > div:first-child > .eyebrow {
+  margin-bottom: 16px;
+}
+.portfolio-page .content-section h2 {
+  max-width: 19ch;
+  margin-bottom: 0;
+}
+.portfolio-section-art {
+  width: min(100%, 270px);
+  margin-top: 24px;
+  color: var(--text);
+  pointer-events: none;
+}
+.portfolio-section-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.portfolio-page .portfolio-content-card > .eyebrow,
+.portfolio-page .portfolio-work-list .eyebrow {
+  margin-bottom: 14px;
+}
+.portfolio-page .portfolio-content-card h3,
+.portfolio-page .portfolio-work-list h3 {
+  font-size: clamp(22px, 2.3vw, 26px);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+.portfolio-page .portfolio-work-list p:not(.eyebrow) {
+  margin-block: 0 16px;
+}
+.portfolio-page .portfolio-content-card > p:not(.eyebrow) {
+  margin-block: 0 16px;
+}
+.portfolio-page .portfolio-work-list article > :last-child {
+  margin-bottom: 0;
+}
+.portfolio-page .portfolio-memberships {
+  padding-left: 22px;
+  padding-block: 4px;
+}
+.portfolio-page .portfolio-memberships li {
+  padding-left: 4px;
+}
+.portfolio-page .portfolio-memberships li + li {
+  margin-top: 20px;
+}
+.portfolio-page .credential-group summary {
+  min-height: 56px;
+}
+.portfolio-page .portfolio-training,
+.portfolio-page .portfolio-work-list,
+.portfolio-page .portfolio-memberships {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .portfolio-page .content-section {
+    row-gap: 24px;
+  }
+  .portfolio-page .content-section h2 {
+    max-width: 24ch;
+  }
+  .portfolio-section-art {
+    width: min(100%, 174px);
+    margin-top: 16px;
+  }
+  .portfolio-page .portfolio-memberships {
+    padding-block: 0;
+  }
+}
+@media print {
+  .portfolio-section-art {
+    display: none;
+  }
+}
