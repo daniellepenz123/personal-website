@@ -1,4 +1,9 @@
 /* Portfolio-only additions; load after the shared style.css. */
+.portfolio-page .portfolio-project + .portfolio-project {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
 .portfolio-page .content-section {
   column-gap: clamp(36px, 5.7vw, 64px);
   padding-block: clamp(40px, 5vw, 64px);
