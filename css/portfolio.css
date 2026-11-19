@@ -174,3 +174,9 @@
   .portfolio-page .portfolio-training-visual { width: min(100%, 220px); }
   .portfolio-page .portfolio-training-visual + .portfolio-training { grid-column: 1; }
 }
+
+.portfolio-page .portfolio-linkedin-link:hover > span,
+.portfolio-page .portfolio-linkedin-link:focus-visible > span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
