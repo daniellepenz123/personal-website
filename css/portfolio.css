@@ -147,7 +147,24 @@
   width: min(100%, 310px);
 }
 .portfolio-page .portfolio-training-visual .portfolio-section-art { width: 100%; }
-.portfolio-page .portfolio-training-visual > p { margin: 16px 0 0; text-align: center; }
+.portfolio-page .portfolio-training-visual > p {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 0;
+  text-align: center;
+}
+.portfolio-page .portfolio-linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.portfolio-page .portfolio-linkedin-link > svg {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+.portfolio-page .portfolio-linkedin-link > span { min-width: 0; }
 .portfolio-page .portfolio-training-visual + .portfolio-training { grid-column: 2; }
 @media (max-width: 700px) {
   .portfolio-page .portfolio-training-visual { width: min(100%, 220px); }
