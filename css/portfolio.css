@@ -143,6 +143,7 @@
 /* Keep the professional-updates link with the training illustration. */
 .portfolio-page .portfolio-training-visual {
   grid-column: 1;
+  justify-self: center;
   align-self: start;
   width: min(100%, 310px);
 }
@@ -155,6 +156,9 @@
 }
 .portfolio-page .portfolio-linkedin-link {
   display: inline-flex;
+  max-width: 100%;
+  min-height: 48px;
+  text-wrap: balance;
   align-items: center;
   justify-content: center;
   gap: 8px;
