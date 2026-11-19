@@ -139,3 +139,17 @@
   .portfolio-page .portfolio-section-art + * { grid-column: 1; }
   .portfolio-page .portfolio-content-card { padding: 24px; }
 }
+
+/* Keep the professional-updates link with the training illustration. */
+.portfolio-page .portfolio-training-visual {
+  grid-column: 1;
+  align-self: start;
+  width: min(100%, 310px);
+}
+.portfolio-page .portfolio-training-visual .portfolio-section-art { width: 100%; }
+.portfolio-page .portfolio-training-visual > p { margin: 16px 0 0; }
+.portfolio-page .portfolio-training-visual + .portfolio-training { grid-column: 2; }
+@media (max-width: 700px) {
+  .portfolio-page .portfolio-training-visual { width: min(100%, 220px); }
+  .portfolio-page .portfolio-training-visual + .portfolio-training { grid-column: 1; }
+}
